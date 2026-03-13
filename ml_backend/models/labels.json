@@ -1,0 +1,13 @@
+{
+  "categories": [
+    "Fire",
+    "Flooding",
+    "Infrastructure Damage",
+    "Medical Emergency"
+  ],
+  "severities": [
+    "High",
+    "Low",
+    "Medium"
+  ]
+}

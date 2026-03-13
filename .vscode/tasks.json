@@ -1,0 +1,42 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start ML Backend",
+      "type": "shell",
+      "command": "python",
+      "args": [
+        "-c",
+        "import os, subprocess, sys; os.chdir('ml_backend'); subprocess.run([sys.executable, 'train_model.py']) if not os.path.exists('models/severity_model.pkl') else None; subprocess.run([sys.executable, 'app.py'])"
+      ],
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Starting",
+          "endsPattern": "Running on http"
+        }
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "label": "ML Backend"
+      }
+    },
+    {
+      "label": "Flutter Run",
+      "type": "shell",
+      "command": "flutter",
+      "args": ["run"],
+      "dependsOn": "Start ML Backend",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "label": "Flutter"
+      }
+    }
+  ]
+}
