@@ -49,10 +49,9 @@ class SituationBriefing {
 }
 
 class GeminiService {
-  // ⚠️ NOTE: I noticed you updated your key.
-  // If "theres a flood in my area lol" is a test, the AI needs
-  // to be told explicitly NOT to ignore casual language.
-  static const String _apiKey = 'AIzaSyAWW48umWsFvxVIUP-nSZHXN0A0r4T4rjU';
+  // API key is supplied at build time, never hard-coded:
+  //   flutter run --dart-define=GEMINI_API_KEY=your_key_here
+  static const String _apiKey = String.fromEnvironment('GEMINI_API_KEY');
   static const String _baseUrl =
       'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
 
